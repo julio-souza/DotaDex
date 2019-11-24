@@ -1,0 +1,90 @@
+ext.deps = [:]
+ext.versions = [:]
+
+//Versions
+//AndroidX
+def androidX = [:]
+androidX.core = "1.1.0"
+androidX.junit = "1.2.0"
+androidX.constraint_layout = "1.1.3"
+androidX.lifecycle = "2.0.0"
+androidX.navigation = "2.1.0"
+versions.androidX = androidX
+
+//Build
+def build = [:]
+build.java = 1.8
+build.min_sdk = 24
+build.target_sdk = 29
+build.test_instrumentation_runner = "androidx.test.runner.AndroidJUnitRunner"
+build.tools = "29.0.2"
+build.version_code = 1
+build.version_name = "0.0.1"
+versions.build = build
+
+//General
+versions.detekt = "1.1.1"
+versions.gradle = "3.5.1"
+versions.kotlin = "1.3.60"
+
+versions.test = [:]
+versions.test.androidx = "1.1.0"
+versions.test.androidx_core_arch = "2.0.1"
+versions.test.androidx_junit = "1.1.1"
+versions.test.espresso_core = "3.2.0"
+versions.test.fragment = "1.1.0"
+versions.test.jacoco = "0.8.5"
+versions.test.junit = "4.12"
+versions.test.mockk = "1.9.3"
+versions.test.objenesis = "2.6"
+//Versions
+
+def android = [:]
+android.appcompat = "androidx.appcompat:appcompat:$androidX.core"
+android.constraint_layout = "androidx.constraintlayout:constraintlayout:$androidX.constraint_layout"
+android.ktx_core = "androidx.core:core-ktx:$androidX.core"
+android.lifecycle_ext = "androidx.lifecycle:lifecycle-extensions:$androidX.lifecycle"
+android.viewmodel_ktx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidX.lifecycle"
+android.navigation_fragment = "androidx.navigation:navigation-fragment-ktx:$androidX.navigation"
+android.navigation_ui = "androidx.navigation:navigation-ui-ktx:$androidX.navigation"
+deps.android = android
+
+def gradle = [:]
+gradle.android = "com.android.tools.build:gradle:$versions.gradle"
+gradle.kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+gradle.detekt = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$versions.detekt"
+deps.gradle = gradle
+
+def kotlin = [:]
+kotlin.core = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
+deps.kotlin = kotlin
+
+def detekt = [:]
+detekt.formatting = "io.gitlab.arturbosch.detekt:detekt-formatting:$versions.detekt"
+deps.detekt = detekt
+
+
+def test = [:]
+test.androidx_core = "androidx.test:core:$versions.test.androidx"
+test.androidx_core_arch = "androidx.arch.core:core-testing:$versions.test.androidx_core_arch"
+test.androidx_junit = "androidx.test.ext:junit:$versions.test.androidx_junit"
+test.androidx_runner = "androidx.test:runner:$versions.test.androidx"
+test.androidx_rules = "androidx.test:rules:$versions.test.androidx"
+test.fragment = "androidx.fragment:fragment-testing:$versions.test.fragment"
+test.espresso_core = "androidx.test.espresso:espresso-core:$versions.test.espresso_core"
+test.junit = "junit:junit:$versions.test.junit"
+test.junit_ktx = "androidx.test.ext:junit-ktx:$versions.test.androidx_junit"
+test.mockk = "io.mockk:mockk:$versions.test.mockk"
+test.mockk_android = "io.mockk:mockk-android:$versions.test.mockk"
+test.objenesis = "org.objenesis:objenesis:$versions.test.objenesis"
+deps.test = test
+
+
+static def addRepos(RepositoryHandler handler) {
+    handler.google()
+    handler.jcenter()
+    handler.maven {
+        url 'https://plugins.gradle.org/m2/'
+    }
+}
+ext.addRepos = this.&addRepos
