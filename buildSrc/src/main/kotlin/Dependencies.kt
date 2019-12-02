@@ -4,6 +4,7 @@ object BuildPlugin {
     const val applicationId = "com.codingwolf.dotadex"
     const val androidApplication = "com.android.application"
     const val kotlinAndroid = "kotlin-android"
+    const val kotlin = "kotlin"
     const val kotlinAndroidExtensions = "kotlin-android-extensions"
     const val testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 }
