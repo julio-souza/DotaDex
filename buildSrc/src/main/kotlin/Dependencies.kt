@@ -40,6 +40,7 @@ object Dependencies {
 
     object Kotlin {
         const val core = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Version.Implementation.kotlin}"
+        const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.Implementation.kotlinCoroutines}"
     }
 
     object Detekt {
@@ -91,6 +92,7 @@ object Version {
         const val detekt = "1.1.1"
         const val gradle = "3.5.1"
         const val kotlin = "1.3.60"
+        const val kotlinCoroutines = "1.3.2"
 
         object Square {
             const val moshi = "1.9.2"

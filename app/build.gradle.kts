@@ -78,7 +78,7 @@ dependencies {
     implementation(Dependencies.AndroidX.navigationFragment)
     implementation(Dependencies.AndroidX.navigationUi)
 
-    implementation(Dependencies.Square.moshi)
+
     implementation(Dependencies.Square.retrofit)
 
 
