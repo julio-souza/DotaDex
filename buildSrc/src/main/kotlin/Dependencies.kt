@@ -5,6 +5,7 @@ object BuildPlugin {
     const val androidApplication = "com.android.application"
     const val kotlinAndroid = "kotlin-android"
     const val kotlin = "kotlin"
+    const val kotlinKapt = "kapt"
     const val kotlinAndroidExtensions = "kotlin-android-extensions"
     const val testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 }
@@ -32,10 +33,16 @@ object Dependencies {
         const val navigationUi = "androidx.navigation:navigation-ui-ktx:${Version.Implementation.AndroidX.navigation}"
     }
 
+    object Google {
+        const val dagger = "com.google.dagger:dagger:${Version.Implementation.Google.dagger}"
+        const val daggerCompiler = "com.google.dagger:dagger-compiler:${Version.Implementation.Google.dagger}"
+    }
+
     object Gradle {
         const val android = "com.android.tools.build:gradle:${Version.Implementation.gradle}"
         const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.Implementation.kotlin}"
         const val detekt = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:${Version.Implementation.detekt}"
+        const val safeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:${Version.Implementation.AndroidX.navigation}"
     }
 
     object Kotlin {
@@ -47,12 +54,15 @@ object Dependencies {
         const val formatting = "io.gitlab.arturbosch.detekt:detekt-formatting:${Version.Implementation.detekt}"
     }
 
-
     object Square {
         const val moshi = "com.squareup.moshi:moshi:${Version.Implementation.Square.moshi}"
+        const val moshiKotlin = "com.squareup.moshi:moshi-kotlin:${Version.Implementation.Square.moshi}"
+
+        const val okHttpLogging = "com.squareup.okhttp3:logging-interceptor:${Version.Implementation.Square.okHttpLogging}"
+
+        const val retrofitConverter = "com.squareup.retrofit2:converter-moshi:${Version.Implementation.Square.retrofit}"
         const val retrofit = "com.squareup.retrofit2:retrofit:${Version.Implementation.Square.retrofit}"
     }
-
 
     object Test {
         const val androidxCore = "androidx.test:core:${Version.Test.AndroidX.core}"
@@ -69,12 +79,14 @@ object Dependencies {
         const val objenesis = "org.objenesis:objenesis:${Version.Test.objenesis}"
     }
 
-
     fun addRepos(handler: RepositoryHandler) {
         handler.google()
         handler.jcenter()
         handler.maven {
             setUrl("https://plugins.gradle.org/m2/")
+        }
+        handler.maven {
+            setUrl("https://jitpack.io")
         }
     }
 }
@@ -96,7 +108,11 @@ object Version {
 
         object Square {
             const val moshi = "1.9.2"
+            const val okHttpLogging = "3.9.0"
             const val retrofit = "2.6.2"
+        }
+        object Google {
+            const val dagger = "2.25.4"
         }
     }
 

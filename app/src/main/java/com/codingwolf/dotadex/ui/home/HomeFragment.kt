@@ -4,28 +4,49 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.codingwolf.dotadex.R
+import com.codingwolf.dotadex.di.ViewModelFactory
+import kotlinx.android.synthetic.main.fragment_home.*
+import javax.inject.Inject
 
 class HomeFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
+    @Inject
+    lateinit var factory: ViewModelFactory
+
+    private val homeViewModel by viewModels<HomeViewModel> { factory }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-            ViewModelProviders.of(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(this, Observer {
-            textView.text = it
-        })
+
+
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        Toast.makeText(requireContext(), "User's Id -> $userId", Toast.LENGTH_SHORT).show()
+
+        initObserver()
+    }
+
+    private fun initObserver() {
+        homeViewModel.profile.observe(this, Observer { profile ->
+            textView_fragmentHome_playerNickname.text =
+                profile.response.playerProfiles[0].personaName
+        })
+    }
+
+    companion object {
+        const val userId = 76561198051747725
     }
 }

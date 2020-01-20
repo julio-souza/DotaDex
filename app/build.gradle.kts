@@ -2,6 +2,7 @@ plugins {
     id(BuildPlugin.androidApplication)
     id(BuildPlugin.kotlinAndroid)
     id(BuildPlugin.kotlinAndroidExtensions)
+    kotlin(BuildPlugin.kotlinKapt)
 }
 
 android {
@@ -21,13 +22,15 @@ android {
     buildTypes {
         getByName("debug") {
             isMinifyEnabled = false
+            isShrinkResources = false
             isTestCoverageEnabled = true
         }
         getByName("release") {
             isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                    getDefaultProguardFile("proguard-android-optimize.txt"),
+                    "proguard-rules.pro"
             )
             isTestCoverageEnabled = true
         }
@@ -64,10 +67,9 @@ android {
 }
 
 dependencies {
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    //Detekt
-    detektPlugins(Dependencies.Detekt.formatting)
-    implementation(Dependencies.Kotlin.core)
+    implementation(project(":domain"))
+    implementation(project(":network"))
+    implementation(project(":data"))
 
     //Android
     implementation(Dependencies.AndroidX.appcompat)
@@ -78,7 +80,17 @@ dependencies {
     implementation(Dependencies.AndroidX.navigationFragment)
     implementation(Dependencies.AndroidX.navigationUi)
 
+    //Dagger
+    implementation(Dependencies.Google.dagger)
+    kapt(Dependencies.Google.daggerCompiler)
 
+    //Detekt
+    detektPlugins(Dependencies.Detekt.formatting)
+    implementation(Dependencies.Kotlin.core)
+
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+
+    //Square
     implementation(Dependencies.Square.retrofit)
 
 
@@ -109,8 +121,8 @@ dependencies {
 
 }
 
-tasks{
-    getByName("preBuild"){
+tasks {
+    getByName("preBuild") {
         dependsOn("detekt")
     }
 }

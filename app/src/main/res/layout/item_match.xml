@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#000000">
+
+    <ImageView
+        android:id="@+id/imageView_itemMatch_hero"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/ic_ancient_five"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView_itemMatch_itemSlot1"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/ic_ancient_five"
+        app:layout_constraintStart_toEndOf="@id/imageView_itemMatch_hero"
+        app:layout_constraintTop_toTopOf="@id/imageView_itemMatch_hero" />
+
+    <ImageView
+        android:id="@+id/imageView_itemMatch_itemSlot2"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_ancient_five"
+        app:layout_constraintStart_toEndOf="@id/imageView_itemMatch_itemSlot1"
+        app:layout_constraintTop_toTopOf="@id/imageView_itemMatch_hero" />
+
+    <ImageView
+        android:id="@+id/imageView_itemMatch_itemSlot3"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_ancient_five"
+        app:layout_constraintStart_toEndOf="@id/imageView_itemMatch_itemSlot2"
+        app:layout_constraintTop_toTopOf="@id/imageView_itemMatch_hero" />
+
+    <ImageView
+        android:id="@+id/imageView_itemMatch_itemSlot4"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_ancient_five"
+        app:layout_constraintStart_toStartOf="@id/imageView_itemMatch_itemSlot1"
+        app:layout_constraintTop_toBottomOf="@id/imageView_itemMatch_itemSlot1" />
+
+    <ImageView
+        android:id="@+id/imageView_itemMatch_itemSlot5"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_ancient_five"
+        app:layout_constraintStart_toStartOf="@id/imageView_itemMatch_itemSlot2"
+        app:layout_constraintTop_toBottomOf="@id/imageView_itemMatch_itemSlot2" />
+
+    <ImageView
+        android:id="@+id/imageView_itemMatch_itemSlot6"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_ancient_five"
+        app:layout_constraintStart_toStartOf="@id/imageView_itemMatch_itemSlot3"
+        app:layout_constraintTop_toBottomOf="@id/imageView_itemMatch_itemSlot3" />
+
+
+
+    <ImageView
+        android:id="@+id/imageView_itemMatch_backPack1"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_ancient_five"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@id/imageView_itemMatch_itemSlot3"
+        app:layout_constraintTop_toTopOf="@id/imageView_itemMatch_itemSlot3" />
+
+    <ImageView
+        android:id="@+id/imageView_itemMatch_backPack2"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_ancient_five"
+        app:layout_constraintStart_toEndOf="@id/imageView_itemMatch_backPack1"
+        app:layout_constraintTop_toTopOf="@id/imageView_itemMatch_backPack1" />
+
+
+
+    <ImageView
+        android:id="@+id/imageView_itemMatch_backPack3"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_ancient_five"
+        app:layout_constraintStart_toStartOf="@id/imageView_itemMatch_backPack1"
+        app:layout_constraintTop_toBottomOf="@id/imageView_itemMatch_backPack1" />
+
+    <ImageView
+        android:id="@+id/imageView_itemMatch_backPack4"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_ancient_five"
+        app:layout_constraintStart_toEndOf="@id/imageView_itemMatch_backPack3"
+        app:layout_constraintTop_toTopOf="@id/imageView_itemMatch_backPack3" />
+
+    <TextView
+        android:id="@+id/textView_itemMatch_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/dotaDex_white"
+        tools:text="26/11/2019 15:30"/>
+
+    <TextView
+        android:id="@+id/textView_itemMatch_kda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintTop_toBottomOf="@id/textView_itemMatch_date"
+        app:layout_constraintStart_toStartOf="@id/textView_itemMatch_date"
+        android:textColor="@color/dotaDex_white"
+        tools:text="12/5/18"/>
+
+    <TextView
+        android:id="@+id/textView_itemMatch_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintTop_toBottomOf="@id/textView_itemMatch_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@android:color/holo_green_dark"
+        android:textStyle="bold"
+        tools:text="VICTORY"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
