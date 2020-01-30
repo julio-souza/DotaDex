@@ -3,9 +3,9 @@ package com.codingwolf.dotadex.di
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.codingwolf.dotadex.di.key.ViewModelKey
-import com.codingwolf.dotadex.ui.search.SearchViewModel
-import com.codingwolf.dotadex.ui.home.HomeViewModel
-import com.codingwolf.dotadex.ui.notifications.NotificationsViewModel
+import com.codingwolf.dotadex.ui.main.home.HomeViewModel
+import com.codingwolf.dotadex.ui.main.search.SearchViewModel
+import com.codingwolf.dotadex.ui.main.notifications.NotificationsViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

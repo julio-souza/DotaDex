@@ -5,6 +5,10 @@
     <color name="colorAccent">#D81B60</color>
 
     <color name="dotaDex_white">#FFFFFF</color>
+    <color name="dotaDex_gold">#FFD700</color>
     <color name="dotaDex_black">#050505</color>
+
+    <color name="dotaDex_green">#52BE80</color>
+    <color name="dotaDex_red">#FF5733</color>
 
 </resources>

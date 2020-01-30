@@ -7,24 +7,21 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 
 
-class SteamWebClient(val handleUserId: (Long) -> Unit) : WebViewClient() {
+class SteamWebClient(val handleaccountId: (Long) -> Unit) : WebViewClient() {
 
 
-    override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
-        Log.i("Resposta", request?.url.toString())
-
+    override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean =
         request?.url?.let { url ->
             if (url.authority?.contains("dotadex") == true) {
                 view?.stopLoading()
 
                 val userAccountUrl: Uri = Uri.parse(url.getQueryParameter("openid.identity"))
-                val userId: String? = userAccountUrl.lastPathSegment
+                val accountId: String? = userAccountUrl.lastPathSegment
 
-                userId?.toLongOrNull()?.let { handleUserId(it) }
+                accountId?.toLongOrNull()?.let { handleaccountId(it) }
                 return false
             }
-        }
+            super.shouldOverrideUrlLoading(view, request)
+        } ?: super.shouldOverrideUrlLoading(view, request)
 
-        return super.shouldOverrideUrlLoading(view, request)
-    }
 }

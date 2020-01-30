@@ -18,91 +18,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView_itemMatch_itemSlot1"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="8dp"
-        android:src="@drawable/ic_ancient_five"
-        app:layout_constraintStart_toEndOf="@id/imageView_itemMatch_hero"
-        app:layout_constraintTop_toTopOf="@id/imageView_itemMatch_hero" />
+    <TextView
+        android:id="@+id/textView_fragmentHome_gpm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/textView_itemMatch_date"
+        app:layout_constraintEnd_toStartOf="@id/textView_itemMatch_date"
+        android:layout_marginEnd="8dp"
+        android:textColor="@color/dotaDex_gold"
+        tools:text="850"/>
 
-    <ImageView
-        android:id="@+id/imageView_itemMatch_itemSlot2"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/ic_ancient_five"
-        app:layout_constraintStart_toEndOf="@id/imageView_itemMatch_itemSlot1"
-        app:layout_constraintTop_toTopOf="@id/imageView_itemMatch_hero" />
-
-    <ImageView
-        android:id="@+id/imageView_itemMatch_itemSlot3"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/ic_ancient_five"
-        app:layout_constraintStart_toEndOf="@id/imageView_itemMatch_itemSlot2"
-        app:layout_constraintTop_toTopOf="@id/imageView_itemMatch_hero" />
-
-    <ImageView
-        android:id="@+id/imageView_itemMatch_itemSlot4"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/ic_ancient_five"
-        app:layout_constraintStart_toStartOf="@id/imageView_itemMatch_itemSlot1"
-        app:layout_constraintTop_toBottomOf="@id/imageView_itemMatch_itemSlot1" />
-
-    <ImageView
-        android:id="@+id/imageView_itemMatch_itemSlot5"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/ic_ancient_five"
-        app:layout_constraintStart_toStartOf="@id/imageView_itemMatch_itemSlot2"
-        app:layout_constraintTop_toBottomOf="@id/imageView_itemMatch_itemSlot2" />
-
-    <ImageView
-        android:id="@+id/imageView_itemMatch_itemSlot6"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/ic_ancient_five"
-        app:layout_constraintStart_toStartOf="@id/imageView_itemMatch_itemSlot3"
-        app:layout_constraintTop_toBottomOf="@id/imageView_itemMatch_itemSlot3" />
-
-
-
-    <ImageView
-        android:id="@+id/imageView_itemMatch_backPack1"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/ic_ancient_five"
-        android:layout_marginStart="8dp"
-        app:layout_constraintStart_toEndOf="@id/imageView_itemMatch_itemSlot3"
-        app:layout_constraintTop_toTopOf="@id/imageView_itemMatch_itemSlot3" />
-
-    <ImageView
-        android:id="@+id/imageView_itemMatch_backPack2"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/ic_ancient_five"
-        app:layout_constraintStart_toEndOf="@id/imageView_itemMatch_backPack1"
-        app:layout_constraintTop_toTopOf="@id/imageView_itemMatch_backPack1" />
-
-
-
-    <ImageView
-        android:id="@+id/imageView_itemMatch_backPack3"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/ic_ancient_five"
-        app:layout_constraintStart_toStartOf="@id/imageView_itemMatch_backPack1"
-        app:layout_constraintTop_toBottomOf="@id/imageView_itemMatch_backPack1" />
-
-    <ImageView
-        android:id="@+id/imageView_itemMatch_backPack4"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/ic_ancient_five"
-        app:layout_constraintStart_toEndOf="@id/imageView_itemMatch_backPack3"
-        app:layout_constraintTop_toTopOf="@id/imageView_itemMatch_backPack3" />
+    <TextView
+        android:id="@+id/textView_fragmentHome_xpm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/textView_fragmentHome_gpm"
+        app:layout_constraintEnd_toStartOf="@id/textView_itemMatch_kda"
+        android:layout_marginEnd="8dp"
+        android:textColor="@color/dotaDex_white"
+        tools:text="850"/>
 
     <TextView
         android:id="@+id/textView_itemMatch_date"

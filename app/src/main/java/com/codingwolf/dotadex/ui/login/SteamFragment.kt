@@ -2,12 +2,14 @@ package com.codingwolf.dotadex.ui.login
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.codingwolf.dotadex.R
+import com.codingwolf.dotadex.util.SteamUtil
 import kotlinx.android.synthetic.main.fragment_steam.*
 
 class SteamFragment : Fragment() {
@@ -31,12 +33,15 @@ class SteamFragment : Fragment() {
 
         webView_steamFragment_main.apply {
             settings.javaScriptEnabled = true
-            webViewClient = SteamWebClient(::handleUserId)
+            webViewClient = SteamWebClient(::handleaccountId)
             loadUrl(url)
         }
     }
 
-    private fun handleUserId(userId: Long) {
+    //todo save the accountId and move to the mainActivity
+    private fun handleaccountId(accountId: Long) {
+        Log.d("SteamId", SteamUtil.getSteam32Id(accountId).toString())
+
         findNavController().navigate(R.id.action_steamFragment_to_mainActivity)
     }
 }

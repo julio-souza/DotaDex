@@ -10,7 +10,6 @@ dependencies {
     implementation(Dependencies.Kotlin.core)
     implementation(Dependencies.Kotlin.coroutines)
     implementation(Dependencies.Square.moshi)
-    implementation(Dependencies.Square.retrofitConverter)
     implementation(Dependencies.Square.retrofit)
 }
 repositories {

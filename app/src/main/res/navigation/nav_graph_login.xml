@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_login"
     app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.codingwolf.dotadex.ui.login.LoginFragment"
-        android:label="LoginFragment" >
+        android:label="LoginFragment">
         <action
             android:id="@+id/action_loginFragment_to_steamFragment"
             app:destination="@id/steamFragment" />
@@ -16,17 +15,17 @@
     <fragment
         android:id="@+id/steamFragment"
         android:name="com.codingwolf.dotadex.ui.login.SteamFragment"
-        android:label="SteamFragment" >
+        android:label="SteamFragment">
         <action
             android:id="@+id/action_steamFragment_to_mainActivity"
             app:destination="@+id/mainActivity">
             <argument
-                android:name="userId"
+                android:name="accountId"
                 android:defaultValue="-1L" />
         </action>
     </fragment>
     <activity
         android:id="@+id/mainActivity"
-        android:name="com.codingwolf.dotadex.ui.MainActivity"
+        android:name="com.codingwolf.dotadex.ui.main.MainActivity"
         android:label="MainActivity" />
 </navigation>

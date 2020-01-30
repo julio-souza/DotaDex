@@ -9,9 +9,10 @@ dependencies {
     implementation(Dependencies.Kotlin.core)
     implementation(Dependencies.Kotlin.coroutines)
     implementation(Dependencies.Square.moshiKotlin)
+    kapt(Dependencies.Square.moshiKotlinCodeGen)
     implementation(Dependencies.Square.okHttpLogging)
     implementation(Dependencies.Square.retrofit)
-    implementation(Dependencies.Square.retrofitConverter)
+    api(Dependencies.Square.retrofitConverter)
 
 
     implementation(Dependencies.Google.dagger)
