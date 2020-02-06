@@ -80,6 +80,9 @@ dependencies {
     implementation(Dependencies.AndroidX.navigationFragment)
     implementation(Dependencies.AndroidX.navigationUi)
 
+    //Glide
+    implementation(Dependencies.Bumptech.glide)
+
     //Dagger
     implementation(Dependencies.Google.dagger)
     kapt(Dependencies.Google.daggerCompiler)

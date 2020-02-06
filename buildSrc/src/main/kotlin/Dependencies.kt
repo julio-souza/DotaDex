@@ -33,6 +33,10 @@ object Dependencies {
         const val navigationUi = "androidx.navigation:navigation-ui-ktx:${Version.Implementation.AndroidX.navigation}"
     }
 
+    object Bumptech {
+        const val glide = "com.github.bumptech.glide:glide:${Version.Implementation.Bumptech.glide}"
+    }
+
     object Google {
         const val dagger = "com.google.dagger:dagger:${Version.Implementation.Google.dagger}"
         const val daggerCompiler = "com.google.dagger:dagger-compiler:${Version.Implementation.Google.dagger}"
@@ -100,6 +104,10 @@ object Version {
             const val constraintLayout = "1.1.3"
             const val lifecycle = "2.0.0"
             const val navigation = "2.1.0"
+        }
+
+        object Bumptech {
+            const val glide = "4.11.0"
         }
 
         const val detekt = "1.1.1"
