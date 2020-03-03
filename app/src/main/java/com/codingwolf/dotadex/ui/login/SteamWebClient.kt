@@ -7,7 +7,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 
 
-class SteamWebClient(val handleaccountId: (Long) -> Unit) : WebViewClient() {
+class SteamWebClient(val handleAccountId: (Long) -> Unit) : WebViewClient() {
 
 
     override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean =
@@ -18,7 +18,7 @@ class SteamWebClient(val handleaccountId: (Long) -> Unit) : WebViewClient() {
                 val userAccountUrl: Uri = Uri.parse(url.getQueryParameter("openid.identity"))
                 val accountId: String? = userAccountUrl.lastPathSegment
 
-                accountId?.toLongOrNull()?.let { handleaccountId(it) }
+                accountId?.toLongOrNull()?.let { handleAccountId(it) }
                 return false
             }
             super.shouldOverrideUrlLoading(view, request)

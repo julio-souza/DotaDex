@@ -2,8 +2,10 @@ package com.codingwolf.dotadex.network.di
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
+import dagger.multibindings.IntoSet
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -17,14 +19,15 @@ import javax.inject.Singleton
 @Module(includes = [ApiModule::class])
 object NetworkModule {
 
+    @Singleton
     @Provides
     @Named("BaseUrl")
     fun provideBaseUrl(): String = "https://api.opendota.com/api/"
 
-    //Temporary
+    @Singleton
     @Provides
-    @Named("BuildType")
-    fun provideBuildType(): Boolean = true
+    @Named("ApiKey")
+    fun provideOpenDotaApiKey(): String = "f6d43a1b-7a06-4543-909e-efaf3b8b223d"
 
     @Singleton
     @Provides
@@ -56,11 +59,21 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideOkHttpClient(interceptor: Interceptor): OkHttpClient =
-        OkHttpClient.Builder().apply { addInterceptor(interceptor) }.build()
+    fun provideOkHttpClient(interceptors: Set<@JvmSuppressWildcards Interceptor>): OkHttpClient =
+        OkHttpClient.Builder().apply { interceptors.forEach { addInterceptor(it) } }.build()
 
-    @Singleton
-    @Provides
-    fun provideInterceptor(@Named("BuildType") debugMode: Boolean): Interceptor =
+
+    @Provides @IntoSet
+    fun providesLoggingInterceptor(@Named("isDebug") debugMode: Boolean): Interceptor =
         HttpLoggingInterceptor().apply { level = if (debugMode) Level.BODY else Level.NONE }
+
+    @Provides @IntoSet
+    fun providesOpenDotaKeyInterceptor(@Named("ApiKey") key: String): Interceptor =
+        Interceptor { chain ->
+            val request = chain.request()
+            val newUrl = request.url().newBuilder().apply { addQueryParameter("Key", key) }.build()
+            val newRequest = request.newBuilder().apply { url(newUrl) }.build()
+
+            chain.proceed(newRequest)
+        }
 }

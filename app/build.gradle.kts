@@ -69,6 +69,7 @@ android {
 dependencies {
     implementation(project(":domain"))
     implementation(project(":network"))
+    implementation(project(":local"))
     implementation(project(":data"))
 
     //Android
@@ -79,6 +80,9 @@ dependencies {
     implementation(Dependencies.AndroidX.viewModelKtx)
     implementation(Dependencies.AndroidX.navigationFragment)
     implementation(Dependencies.AndroidX.navigationUi)
+
+    //Facebook
+    implementation(Dependencies.Facebook.stetho)
 
     //Glide
     implementation(Dependencies.Bumptech.glide)

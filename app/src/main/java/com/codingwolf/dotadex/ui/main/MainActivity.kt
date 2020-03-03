@@ -8,7 +8,7 @@ import com.codingwolf.dotadex.App
 import com.codingwolf.dotadex.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     val mainComponent by lazy { (application as App).appComponent.mainComponent().create() }
 
@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
         mainComponent.inject(this)
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 

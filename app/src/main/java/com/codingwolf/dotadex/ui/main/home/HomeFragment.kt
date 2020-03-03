@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -29,7 +30,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     lateinit var dateUtil: DateUtil
 
     private val homeViewModel by viewModels<HomeViewModel> { factory }
-
     private val matchAdapter by lazy { MatchAdapter(mutableListOf(), dateUtil) }
 
     override fun onAttach(context: Context) {
@@ -40,8 +40,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Toast.makeText(requireContext(), "User's Id -> $accountId", Toast.LENGTH_SHORT).show()
-
         initObserver()
         recyclerView_fragmentHome_match.apply {
             layoutManager = LinearLayoutManager(requireContext())
@@ -50,33 +48,32 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun initObserver() {
-        homeViewModel.player.observe(this, Observer { profile ->
+        homeViewModel.player.observe(viewLifecycleOwner, Observer { profile ->
             textView_fragmentHome_playerNickname.text =
-                profile.profile.personaName
+                profile.personaName
         })
 
-        homeViewModel.matches.observe(this, Observer(::updateMatchDetails))
+        homeViewModel.matches.observe(viewLifecycleOwner, Observer(::updateMatchDetails))
 
-        homeViewModel.error.observe(this, Observer {
+        homeViewModel.error.observe(viewLifecycleOwner, Observer {
             Log.d("HomeFragment", "Error:\n$it")
         })
     }
 
     private fun updateMatchDetails(matches: List<Match>) {
-        matchAdapter.updateMatches(matches)
+        matches.reversed().let { matchAdapter.updateMatches(it) }
 
         var victories = 0f
         val entries = mutableListOf(Entry(0f, 0f))
 
         entries.addAll(
-            matches.reversed().mapIndexed { index: Int, match: Match ->
+            matches.mapIndexed { index: Int, match: Match ->
                 Entry(
                     index.toFloat() + 1,
-                    if (match.isVictory) ++victories * 25 else --victories * 25
+                    if (match.victory) ++victories * 25 else --victories * 25
                 )
             }
         )
-
 
         val dataSet = LineDataSet(entries, "Vitórias")
         dataSet.valueTextColor = requireContext().getColor(R.color.dotaDex_white)
@@ -85,9 +82,5 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         lineChart_fragmentHome_gameChart.data = lineData
         lineChart_fragmentHome_gameChart.invalidate()
-    }
-
-    companion object {
-        const val accountId = 76561198051747725
     }
 }

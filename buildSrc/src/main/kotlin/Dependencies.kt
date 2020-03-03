@@ -3,6 +3,7 @@ import org.gradle.api.artifacts.dsl.RepositoryHandler
 object BuildPlugin {
     const val applicationId = "com.codingwolf.dotadex"
     const val androidApplication = "com.android.application"
+    const val androidLibrary = "com.android.library"
     const val kotlinAndroid = "kotlin-android"
     const val kotlin = "kotlin"
     const val kotlinKapt = "kapt"
@@ -31,10 +32,17 @@ object Dependencies {
         const val viewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.Implementation.AndroidX.lifecycle}"
         const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Version.Implementation.AndroidX.navigation}"
         const val navigationUi = "androidx.navigation:navigation-ui-ktx:${Version.Implementation.AndroidX.navigation}"
+        const val room = "androidx.room:room-runtime:${Version.Implementation.AndroidX.room}"
+        const val roomCompiler = "androidx.room:room-compiler:${Version.Implementation.AndroidX.room}"
+        const val roomKtx = "androidx.room:room-ktx:${Version.Implementation.AndroidX.room}"
     }
 
     object Bumptech {
         const val glide = "com.github.bumptech.glide:glide:${Version.Implementation.Bumptech.glide}"
+    }
+
+    object Facebook {
+        const val stetho = "com.facebook.stetho:stetho:${Version.Implementation.Facebook.stetho}"
     }
 
     object Google {
@@ -104,6 +112,7 @@ object Version {
             const val constraintLayout = "1.1.3"
             const val lifecycle = "2.0.0"
             const val navigation = "2.1.0"
+            const val room = "2.2.3"
         }
 
         object Bumptech {
@@ -111,7 +120,7 @@ object Version {
         }
 
         const val detekt = "1.1.1"
-        const val gradle = "3.5.1"
+        const val gradle = "4.0.0-beta01" //3.5.2 stable
         const val kotlin = "1.3.60"
         const val kotlinCoroutines = "1.3.2"
 
@@ -122,6 +131,10 @@ object Version {
         }
         object Google {
             const val dagger = "2.25.4"
+        }
+
+        object Facebook {
+            const val stetho = "1.5.1"
         }
     }
 

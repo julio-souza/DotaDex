@@ -33,8 +33,8 @@ class MatchAdapter(
                     .load("http://cdn.dota2.com/apps/dota2/images/heroes/snapfire_full.png")
                     .into(heroImage)
 
-                gpm.text = match.goldPerMin.toString()
-                xpm.text = match.xpPerMin.toString()
+                gpm.text = match.gpm.toString()
+                xpm.text = match.xpm.toString()
 
                 date.text = dateUtil.formatDate(match.startTime)
 
@@ -45,7 +45,7 @@ class MatchAdapter(
                     match.assists
                 )
 
-                if (match.isVictory) {
+                if (match.victory) {
                     result.text = context.getString(R.string.all_victory)
                     result.setTextColor(context.getColor(R.color.dotaDex_green))
                 } else {

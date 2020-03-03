@@ -5,7 +5,11 @@ import com.codingwolf.dotadex.ui.main.home.HomeFragment
 import dagger.Subcomponent
 
 @MainScope
-@Subcomponent
+@Subcomponent(
+    modules = [
+        MainModule::class
+    ]
+)
 interface MainComponent {
 
     @Subcomponent.Factory

@@ -2,6 +2,7 @@ package com.codingwolf.dotadex
 
 import android.app.Application
 import com.codingwolf.dotadex.di.DaggerAppComponent
+import com.facebook.stetho.Stetho
 
 class App : Application() {
 
@@ -9,5 +10,7 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+        Stetho.initializeWithDefaults(this)
     }
 }

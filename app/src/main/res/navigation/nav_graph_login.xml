@@ -11,6 +11,9 @@
         <action
             android:id="@+id/action_loginFragment_to_steamFragment"
             app:destination="@id/steamFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_mainActivity"
+            app:destination="@id/mainActivity" />
     </fragment>
     <fragment
         android:id="@+id/steamFragment"
@@ -18,7 +21,7 @@
         android:label="SteamFragment">
         <action
             android:id="@+id/action_steamFragment_to_mainActivity"
-            app:destination="@+id/mainActivity">
+            app:destination="@id/mainActivity">
             <argument
                 android:name="accountId"
                 android:defaultValue="-1L" />
