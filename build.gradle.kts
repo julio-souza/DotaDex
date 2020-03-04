@@ -7,6 +7,7 @@ buildscript {
         classpath(Dependencies.Gradle.android)
         classpath(Dependencies.Gradle.kotlin)
         classpath(Dependencies.Gradle.detekt)
+        classpath(Dependencies.Gradle.safeArgs)
     }
 }
 
@@ -16,7 +17,6 @@ allprojects {
     apply {
         plugin("io.gitlab.arturbosch.detekt")
     }
-
 
     detekt {
         toolVersion = Version.Implementation.detekt

@@ -1,2 +1,2 @@
-include(":app", ":domain")
+include(":app", ":domain", ":data", ":network", ":local")
 rootProject.name = "DotaDex"

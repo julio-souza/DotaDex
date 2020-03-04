@@ -8,4 +8,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.Fragment">
+        <item name="android:background">@color/dotaDex_black</item>
+        <item name="android:textColor">@color/dotaDex_white</item>
+    </style>
+
 </resources>

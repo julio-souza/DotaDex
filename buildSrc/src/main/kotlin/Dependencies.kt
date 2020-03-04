@@ -3,7 +3,10 @@ import org.gradle.api.artifacts.dsl.RepositoryHandler
 object BuildPlugin {
     const val applicationId = "com.codingwolf.dotadex"
     const val androidApplication = "com.android.application"
+    const val androidLibrary = "com.android.library"
     const val kotlinAndroid = "kotlin-android"
+    const val kotlin = "kotlin"
+    const val kotlinKapt = "kapt"
     const val kotlinAndroidExtensions = "kotlin-android-extensions"
     const val testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 }
@@ -29,28 +32,50 @@ object Dependencies {
         const val viewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.Implementation.AndroidX.lifecycle}"
         const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Version.Implementation.AndroidX.navigation}"
         const val navigationUi = "androidx.navigation:navigation-ui-ktx:${Version.Implementation.AndroidX.navigation}"
+        const val room = "androidx.room:room-runtime:${Version.Implementation.AndroidX.room}"
+        const val roomCompiler = "androidx.room:room-compiler:${Version.Implementation.AndroidX.room}"
+        const val roomKtx = "androidx.room:room-ktx:${Version.Implementation.AndroidX.room}"
+    }
+
+    object Bumptech {
+        const val glide = "com.github.bumptech.glide:glide:${Version.Implementation.Bumptech.glide}"
+    }
+
+    object Facebook {
+        const val stetho = "com.facebook.stetho:stetho:${Version.Implementation.Facebook.stetho}"
+    }
+
+    object Google {
+        const val dagger = "com.google.dagger:dagger:${Version.Implementation.Google.dagger}"
+        const val daggerCompiler = "com.google.dagger:dagger-compiler:${Version.Implementation.Google.dagger}"
     }
 
     object Gradle {
         const val android = "com.android.tools.build:gradle:${Version.Implementation.gradle}"
         const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.Implementation.kotlin}"
         const val detekt = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:${Version.Implementation.detekt}"
+        const val safeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:${Version.Implementation.AndroidX.navigation}"
     }
 
     object Kotlin {
         const val core = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Version.Implementation.kotlin}"
+        const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.Implementation.kotlinCoroutines}"
     }
 
     object Detekt {
         const val formatting = "io.gitlab.arturbosch.detekt:detekt-formatting:${Version.Implementation.detekt}"
     }
 
-
     object Square {
         const val moshi = "com.squareup.moshi:moshi:${Version.Implementation.Square.moshi}"
+        const val moshiKotlinCodeGen = "com.squareup.moshi:moshi-kotlin-codegen:${Version.Implementation.Square.moshi}"
+        const val moshiKotlin = "com.squareup.moshi:moshi-kotlin:${Version.Implementation.Square.moshi}"
+
+        const val okHttpLogging = "com.squareup.okhttp3:logging-interceptor:${Version.Implementation.Square.okHttpLogging}"
+
+        const val retrofitConverter = "com.squareup.retrofit2:converter-moshi:${Version.Implementation.Square.retrofit}"
         const val retrofit = "com.squareup.retrofit2:retrofit:${Version.Implementation.Square.retrofit}"
     }
-
 
     object Test {
         const val androidxCore = "androidx.test:core:${Version.Test.AndroidX.core}"
@@ -67,12 +92,14 @@ object Dependencies {
         const val objenesis = "org.objenesis:objenesis:${Version.Test.objenesis}"
     }
 
-
     fun addRepos(handler: RepositoryHandler) {
         handler.google()
         handler.jcenter()
         handler.maven {
             setUrl("https://plugins.gradle.org/m2/")
+        }
+        handler.maven {
+            setUrl("https://jitpack.io")
         }
     }
 }
@@ -85,15 +112,29 @@ object Version {
             const val constraintLayout = "1.1.3"
             const val lifecycle = "2.0.0"
             const val navigation = "2.1.0"
+            const val room = "2.2.3"
+        }
+
+        object Bumptech {
+            const val glide = "4.11.0"
         }
 
         const val detekt = "1.1.1"
-        const val gradle = "3.5.1"
+        const val gradle = "4.0.0-beta01" //3.5.2 stable
         const val kotlin = "1.3.60"
+        const val kotlinCoroutines = "1.3.2"
 
         object Square {
             const val moshi = "1.9.2"
+            const val okHttpLogging = "3.9.0"
             const val retrofit = "2.6.2"
+        }
+        object Google {
+            const val dagger = "2.25.4"
+        }
+
+        object Facebook {
+            const val stetho = "1.5.1"
         }
     }
 
